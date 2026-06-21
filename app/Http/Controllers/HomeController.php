@@ -224,10 +224,26 @@ class HomeController extends Controller
   {
     $package = Package::where('id', Auth::user()->package)->first();
     $coins = Coin::get();
+    
+    // Fetch all user IPOs for stats
+    $allUserIpos = Auth::user()->userIpos()->with('ipo')->get();
+    
+    $totalIpoInvestment = $allUserIpos->sum('total_amount');
+    $totalSharesBought = $allUserIpos->sum('quantity');
+    $uniqueHoldingsCount = $allUserIpos->pluck('ipo_id')->unique()->count();
+    $avgSharePrice = $totalSharesBought > 0 ? $totalIpoInvestment / $totalSharesBought : 0;
+    
+    // Take latest 5 for the dashboard list
+    $purchasedIpos = $allUserIpos->sortByDesc('created_at')->take(5);
 
     return view('user.dashboard')->with([
       'package' => $package,
-      'coins' => $coins
+      'coins' => $coins,
+      'purchasedIpos' => $purchasedIpos,
+      'totalIpoInvestment' => $totalIpoInvestment,
+      'totalSharesBought' => $totalSharesBought,
+      'uniqueHoldingsCount' => $uniqueHoldingsCount,
+      'avgSharePrice' => $avgSharePrice
     ]);
   }
 

@@ -64,6 +64,77 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-xxl-8 col-xl-6 col-md-12">
+                                    <div class="card stretch stretch-full">
+                                        <div class="card-header d-flex align-items-center justify-content-between">
+                                            <h5 class="card-title mb-0">Stock &amp; IPO Statistics</h5>
+                                            <a href="{{ route('user.ipos.purchased') }}" class="btn btn-sm btn-outline-primary">View All</a>
+                                        </div>
+                                        <div class="card-body">
+                                            @if($purchasedIpos->isEmpty())
+                                                <div class="text-center py-5 px-3">
+                                                    <div class="avatar avatar-lg bg-soft-primary text-primary mb-3 mx-auto" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                                                        <i class="feather-trending-up fs-24"></i>
+                                                    </div>
+                                                    <h6 class="fw-bold text-dark">No Purchased Stocks or IPOs</h6>
+                                                    <p class="text-muted small mb-4">Start investing in initial public offerings and stocks to grow your portfolio.</p>
+                                                    <a href="{{ route('user.ipos.index') }}" class="btn btn-sm btn-primary">Explore Markets</a>
+                                                </div>
+                                            @else
+                                                <div class="row g-4">
+                                                    <!-- Stat 1 -->
+                                                    <div class="col-sm-6">
+                                                        <div class="p-3 border rounded bg-light-soft d-flex align-items-center" style="border-radius: 8px; border: 1px solid rgba(0, 0, 0, 0.05) !important;">
+                                                            <div class="avatar avatar-sm text-primary me-3" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background-color: rgba(var(--primary-rgb), 0.1) !important;">
+                                                                <i class="bx bx-line-chart fs-18"></i>
+                                                            </div>
+                                                            <div>
+                                                                <span class="fs-11 text-muted text-uppercase d-block fw-semibold" style="letter-spacing: 0.5px;">Invested Value</span>
+                                                                <h5 class="fw-bold mb-0 text-dark">{{ currency_converter($totalIpoInvestment) }}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Stat 2 -->
+                                                    <div class="col-sm-6">
+                                                        <div class="p-3 border rounded bg-light-soft d-flex align-items-center" style="border-radius: 8px; border: 1px solid rgba(0, 0, 0, 0.05) !important;">
+                                                            <div class="avatar avatar-sm text-success me-3" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background-color: rgba(40, 167, 69, 0.1) !important;">
+                                                                <i class="bx bx-pie-chart-alt-2 fs-18"></i>
+                                                            </div>
+                                                            <div>
+                                                                <span class="fs-11 text-muted text-uppercase d-block fw-semibold" style="letter-spacing: 0.5px;">Total Shares</span>
+                                                                <h5 class="fw-bold mb-0 text-dark">{{ number_format($totalSharesBought) }}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Stat 3 -->
+                                                    <div class="col-sm-6">
+                                                        <div class="p-3 border rounded bg-light-soft d-flex align-items-center" style="border-radius: 8px; border: 1px solid rgba(0, 0, 0, 0.05) !important;">
+                                                            <div class="avatar avatar-sm text-info me-3" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background-color: rgba(23, 162, 184, 0.1) !important;">
+                                                                <i class="bx bx-briefcase fs-18"></i>
+                                                            </div>
+                                                            <div>
+                                                                <span class="fs-11 text-muted text-uppercase d-block fw-semibold" style="letter-spacing: 0.5px;">Unique Assets</span>
+                                                                <h5 class="fw-bold mb-0 text-dark">{{ $uniqueHoldingsCount }}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Stat 4 -->
+                                                    <div class="col-sm-6">
+                                                        <div class="p-3 border rounded bg-light-soft d-flex align-items-center" style="border-radius: 8px; border: 1px solid rgba(0, 0, 0, 0.05) !important;">
+                                                            <div class="avatar avatar-sm text-warning me-3" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background-color: rgba(255, 193, 7, 0.1) !important;">
+                                                                <i class="bx bx-purchase-tag-alt fs-18"></i>
+                                                            </div>
+                                                            <div>
+                                                                <span class="fs-11 text-muted text-uppercase d-block fw-semibold" style="letter-spacing: 0.5px;">Avg Share Cost</span>
+                                                                <h5 class="fw-bold mb-0 text-dark">{{ currency_converter($avgSharePrice) }}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="card stretch stretch-full">
                                         <div class="card-header border-0">
