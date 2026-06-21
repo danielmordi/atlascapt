@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "set NODE_OPTIONS=--openssl-legacy-provider && npm run development",
+    "development": "set NODE_OPTIONS=--openssl-legacy-provider && mix",
+    "watch": "set NODE_OPTIONS=--openssl-legacy-provider && mix watch",
+    "watch-poll": "set NODE_OPTIONS=--openssl-legacy-provider && mix watch -- --watch-options-poll=1000",
+    "hot": "set NODE_OPTIONS=--openssl-legacy-provider && mix watch --hot",
+    "prod": "set NODE_OPTIONS=--openssl-legacy-provider && npm run production",
+    "production": "set NODE_OPTIONS=--openssl-legacy-provider && mix --production"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.4",
+    "axios": "^0.21",
+    "laravel-mix": "^6.0.6",
+    "lodash": "^4.17.19",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.23"
+  },
+  "dependencies": {
+    "clipboard": "^2.0.8"
+  }
+}

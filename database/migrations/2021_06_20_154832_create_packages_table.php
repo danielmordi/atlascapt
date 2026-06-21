@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreatePackagesTable extends Migration
+{
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('packages', function (Blueprint $table) {
+      $table->id();
+      $table->string('name')->unique();
+      $table->string('hash_rate');
+      $table->integer('percentage');
+      $table->bigInteger('min_val');
+      $table->bigInteger('max_val');
+      $table->string('duration');
+      $table->timestamps();
+    });
+
+    Schema::table('users', function (Blueprint $table) {
+      $table->foreign('package_id')->references('id')->on('packages');
+    });
+  }
+
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::table('users', function (Blueprint $table) {
+      $table->dropForeign(['package_id']);
+    });
+    Schema::dropIfExists('packages');
+  }
+}
