@@ -217,7 +217,8 @@
                             onclick="event.preventDefault(); document.getElementById('side_bar_logout_btn').submit();">
                             <span class="nxl-micon"><i class='bx bx-log-out text-danger'></i></span>
                             <span class="nxl-mtext text-danger">Logout</span>
-                            <form id="side_bar_logout_btn" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="side_bar_logout_btn" action="{{ route('logout') }}" method="POST"
+                                class="d-none">
                                 @csrf
                             </form>
                         </a>
@@ -279,41 +280,52 @@
                         </a>
                     </div>
                     @if (Auth::user()->role_id == 2)
-                    <!-- Notification Bell Dropdown -->
-                    <div class="dropdown nxl-h-item">
-                        <a class="nxl-head-link me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="feather-bell"></i>
-                            @if(Auth::user()->unreadNotifications->count() > 0)
-                                <span class="badge bg-danger rounded-circle position-absolute top-0 start-100 translate-middle-y px-1" style="font-size: 0.6rem; transform: translate(-50%, 25%) !important; min-width: 19px !important; height: 19px !important;">
-                                    {{ Auth::user()->unreadNotifications->count() }}
-                                </span>
-                            @endif
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-notification-dropdown" style="min-width: 320px; max-height: 400px; overflow-y: auto;">
-                            <div class="dropdown-header d-flex align-items-center justify-content-between">
-                                <h6 class="text-dark mb-0">Notifications</h6>
-                                @if(Auth::user()->unreadNotifications->count() > 0)
-                                    <a href="{{ route('user.notifications.readAll') }}" class="fs-11 fw-semibold text-primary">Mark all as read</a>
+                        <!-- Notification Bell Dropdown -->
+                        <div class="dropdown nxl-h-item">
+                            <a class="nxl-head-link me-0" data-bs-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="feather-bell"></i>
+                                @if (Auth::user()->unreadNotifications->count() > 0)
+                                    <span
+                                        class="badge bg-danger rounded-circle position-absolute top-0 start-100 translate-middle-y px-1"
+                                        style="font-size: 0.6rem; transform: translate(-50%, 25%) !important; min-width: 19px !important; height: 19px !important;">
+                                        {{ Auth::user()->unreadNotifications->count() }}
+                                    </span>
                                 @endif
-                            </div>
-                            <div class="dropdown-divider"></div>
-                            @forelse(Auth::user()->notifications()->take(5)->get() as $notification)
-                                <div class="dropdown-item d-flex align-items-start p-3 gap-2 {{ $notification->read() ? 'text-muted' : 'bg-light fw-bold' }}" style="white-space: normal;">
-                                    <div class="flex-grow-1">
-                                        <div class="d-flex justify-content-between align-items-center mb-1">
-                                            <span class="fs-12 text-dark">{{ $notification->data['title'] ?? 'Notification' }}</span>
-                                            <span class="fs-10 text-muted">{{ $notification->created_at->diffForHumans() }}</span>
-                                        </div>
-                                        <p class="fs-11 mb-0 text-muted">{{ $notification->data['message'] ?? '' }}</p>
-                                    </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-notification-dropdown"
+                                style="min-width: 320px; max-height: 400px; overflow-y: auto;">
+                                <div class="dropdown-header d-flex align-items-center justify-content-between">
+                                    <h6 class="text-dark mb-0">Notifications</h6>
+                                    @if (Auth::user()->unreadNotifications->count() > 0)
+                                        <a href="{{ route('user.notifications.readAll') }}"
+                                            class="fs-11 fw-semibold text-primary">Mark all as read</a>
+                                    @endif
                                 </div>
                                 <div class="dropdown-divider"></div>
-                            @empty
-                                <div class="p-3 text-center text-muted">No notifications</div>
-                            @endforelse
-                            <a href="{{ route('user.notifications') }}" class="dropdown-item text-center text-primary fs-11 fw-semibold">View All Notifications</a>
+                                @forelse(Auth::user()->notifications()->take(5)->get() as $notification)
+                                    <div class="dropdown-item d-flex align-items-start p-3 gap-2 {{ $notification->read() ? 'text-muted' : 'bg-light fw-bold' }}"
+                                        style="white-space: normal;">
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span
+                                                    class="fs-12 text-dark">{{ $notification->data['title'] ?? 'Notification' }}</span>
+                                                <span
+                                                    class="fs-10 text-muted">{{ $notification->created_at->diffForHumans() }}</span>
+                                            </div>
+                                            <p class="fs-11 mb-0 text-muted">
+                                                {{ $notification->data['message'] ?? '' }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                @empty
+                                    <div class="p-3 text-center text-muted">No notifications</div>
+                                @endforelse
+                                <a href="{{ route('user.notifications') }}"
+                                    class="dropdown-item text-center text-primary fs-11 fw-semibold">View All
+                                    Notifications</a>
+                            </div>
                         </div>
-                    </div>
                     @endif
                     <div class="dropdown nxl-h-item sr-only">
                         <a href="javascript:void(0);" data-bs-toggle="dropdown" role="button"
@@ -449,7 +461,8 @@
                                 <i class="feather-dollar-sign"></i>
                                 <span>Billing Details</span>
                             </a>
-                            <a href="{{ Auth::user()->role_id == 2 ? route('user.notifications') : 'javascript:void(0);' }}" class="dropdown-item">
+                            <a href="{{ Auth::user()->role_id == 2 ? route('user.notifications') : 'javascript:void(0);' }}"
+                                class="dropdown-item">
                                 <i class="feather-bell"></i>
                                 <span>Notifications</span>
                             </a>
@@ -518,7 +531,15 @@
     <!--! Footer Script !-->
     <!--! ================================================================ !-->
     <div class="gtranslate_wrapper"></div>
-    <script>window.gtranslateSettings = {"default_language":"en","native_language_names":true,"detect_browser_language":true,"languages":["en","fr","it","es","de","id","th","hi","ar"],"wrapper_selector":".gtranslate_wrapper"}</script>
+    <script>
+        window.gtranslateSettings = {
+            "default_language": "en",
+            "native_language_names": true,
+            "detect_browser_language": true,
+            "languages": ["en", "fr", "it", "es", "de", "id", "th", "hi", "ar"],
+            "wrapper_selector": ".gtranslate_wrapper"
+        }
+    </script>
     <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
     <!--! BEGIN: Vendors JS !-->
     <script src="{{ asset('dash-assets/vendors/js/vendors.min.js') }}"></script>
@@ -536,17 +557,25 @@
 
 
     <!-- Smartsupp Live Chat script -->
-<script type="text/javascript">
-var _smartsupp = _smartsupp || {};
-_smartsupp.key = '895c501c9dc88990965cb7859ee28172f070465a';
-window.smartsupp||(function(d) {
-  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-  c.type='text/javascript';c.charset='utf-8';c.async=true;
-  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-})(document);
-</script>
-<noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '6d86d053ca4564fd3f18aaebe09057977c8fb461';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)
+            };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+
 
 
     @stack('modals')
