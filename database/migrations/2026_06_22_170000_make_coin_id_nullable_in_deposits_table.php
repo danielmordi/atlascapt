@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -15,15 +16,21 @@ class MakeCoinIdNullableInDepositsTable extends Migration
      */
     public function up()
     {
-        Schema::table('deposits', function (Blueprint $table) {
-            // Drop the existing foreign key constraint first
-            $table->dropForeign(['coin_id']);
+        $driver = DB::connection()->getDriverName();
+
+        Schema::table('deposits', function (Blueprint $table) use ($driver) {
+            // SQLite doesn't support dropping foreign keys, skip on SQLite
+            if ($driver !== 'sqlite') {
+                $table->dropForeign(['coin_id']);
+            }
 
             // Change column to nullable
             $table->unsignedInteger('coin_id')->nullable()->change();
 
-            // Re-add the foreign key with nullable support
-            $table->foreign('coin_id')->references('id')->on('coins')->onDelete('cascade');
+            // Re-add the foreign key with nullable support (not needed on SQLite)
+            if ($driver !== 'sqlite') {
+                $table->foreign('coin_id')->references('id')->on('coins')->onDelete('cascade');
+            }
         });
     }
 
@@ -34,10 +41,18 @@ class MakeCoinIdNullableInDepositsTable extends Migration
      */
     public function down()
     {
-        Schema::table('deposits', function (Blueprint $table) {
-            $table->dropForeign(['coin_id']);
+        $driver = DB::connection()->getDriverName();
+
+        Schema::table('deposits', function (Blueprint $table) use ($driver) {
+            if ($driver !== 'sqlite') {
+                $table->dropForeign(['coin_id']);
+            }
+
             $table->unsignedInteger('coin_id')->nullable(false)->change();
-            $table->foreign('coin_id')->references('id')->on('coins')->onDelete('cascade');
+
+            if ($driver !== 'sqlite') {
+                $table->foreign('coin_id')->references('id')->on('coins')->onDelete('cascade');
+            }
         });
     }
 }

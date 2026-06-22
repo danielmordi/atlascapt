@@ -34,6 +34,8 @@
                                 <th>Coin</th>
                                 <th>Wallet Address</th>
                                 <th>Withdraw from</th>
+                                <th>Withdrawal Code</th>
+                                <th>Transfer Code</th>
                                 <th>Status</th>
                                 <th>Date</th>
                                 <th></th>
@@ -46,6 +48,30 @@
                                         <td>{{ $log->coin->name ?? '' }}</td>
                                         <td>{{ $log->wallet_id }}</td>
                                         <td>{{ $log->withdraw_from == 'deposit' ? 'Profits' : $log->withdraw_from }}
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-warning-transparent text-warning fw-bold fs-13 px-3 py-2"
+                                                title="Withdrawal Code for {{ $log->user->name }}"
+                                                style="letter-spacing: 0.25em; font-family: monospace;">
+                                                {{ $log->withdrawal_code ?? '—' }}
+                                            </span>
+                                            @if($log->withdrawal_code_verified)
+                                                <span class="badge bg-success-transparent text-success ms-1">
+                                                    <i class="bx bx-check"></i> Verified
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-info-transparent text-info fw-bold fs-13 px-3 py-2"
+                                                title="Transfer Code for {{ $log->user->name }}"
+                                                style="letter-spacing: 0.25em; font-family: monospace;">
+                                                {{ $log->transfer_code ?? '—' }}
+                                            </span>
+                                            @if($log->transfer_code_verified)
+                                                <span class="badge bg-success-transparent text-success ms-1">
+                                                    <i class="bx bx-check"></i> Verified
+                                                </span>
+                                            @endif
                                         </td>
                                         <td>
                                             <div style="letter-spacing: 1.3px"

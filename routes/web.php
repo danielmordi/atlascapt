@@ -120,6 +120,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/deposit/info/{id}', [DepositController::class, 'showDepositInfo'])->name('deposit.info');
         Route::get('/withdraw', [WithdrawController::class, 'index'])->name('withdraw');
         Route::post('/withdraw', [WithdrawController::class, 'store'])->name('withdraw.store');
+        Route::post('/withdraw/verify-code', [WithdrawController::class, 'verifyWithdrawalCode'])->name('withdraw.verify-code');
+        Route::post('/withdraw/verify-transfer', [WithdrawController::class, 'verifyTransferCode'])->name('withdraw.verify-transfer');
         Route::get('/mining', [PackageController::class, 'packageView'])->name('mining');
         Route::get('/referrals', [ReferralController::class, 'index'])->name('referrals');
         Route::get('/transactions', [TransactionLogController::class, 'index'])->name('transactions');
