@@ -161,6 +161,12 @@
                                 <span class="nxl-mtext">My Referral</span>
                             </a>
                         </li>
+                        <li class="nxl-item">
+                            <a href="{{ route('user.profile') }}" class="nxl-link">
+                                <span class="nxl-micon"><i class='bx bx-user-circle'></i></span>
+                                <span class="nxl-mtext">Profile Settings</span>
+                            </a>
+                        </li>
                     @else
                         {{-- Admin menu items --}}
                         <li class="nxl-item">
@@ -449,9 +455,9 @@
                                 </div>
                             </div>
                             <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0);" class="dropdown-item">
+                            <a href="{{ Auth::user()->role_id == 2 ? route('user.profile') : route('admin.profile') }}" class="dropdown-item">
                                 <i class="feather-user"></i>
-                                <span>Profile Details</span>
+                                <span>Profile & Password</span>
                             </a>
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <i class="feather-activity"></i>
@@ -466,7 +472,7 @@
                                 <i class="feather-bell"></i>
                                 <span>Notifications</span>
                             </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
+                            <a href="{{ Auth::user()->role_id == 2 ? route('user.profile') : route('admin.profile') }}" class="dropdown-item">
                                 <i class="feather-settings"></i>
                                 <span>Account Settings</span>
                             </a>

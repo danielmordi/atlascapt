@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('settings/update', [SiteController::class, 'updateSettings']);
         Route::get('settings/profile', [SiteController::class, 'profile'])->name('profile');
         Route::post('settings/update/profile/{id}', [SiteController::class, 'updateProfile'])->name('profile.update');
+        Route::post('settings/update/password', [SiteController::class, 'updatePassword'])->name('profile.password');
         Route::post('user/send/mail', [AdminController::class, 'sendMail']);
         Route::post('user/send/notification/{id}', [AdminController::class, 'sendNotification'])->name('send.notification');
         Route::get('/broadcast', [AdminController::class, 'broadcast'])->name('broadcast');
@@ -135,6 +136,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/ipo', [IpoController::class, 'userIndex'])->name('ipos.index');
         Route::get('/my-ipo', [IpoController::class, 'userPurchased'])->name('ipos.purchased');
         Route::post('/ipo/purchase', [IpoController::class, 'purchase'])->name('ipos.purchase');
+        // Profile Settings
+        Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+        Route::post('/profile/update', [HomeController::class, 'updateProfile'])->name('profile.update');
+        Route::post('/profile/password', [HomeController::class, 'updatePassword'])->name('profile.password');
+
         // Login as admin
         Route::get('/{id}', [AdminController::class, 'loginAs'])->name('loginAsAdmin');
     });

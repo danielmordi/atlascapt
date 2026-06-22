@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-    Admin Profile Settings
+    Profile Settings
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
             <div class="py-4 d-md-flex d-block align-items-center justify-content-between page-header-breadcrumb">
                 <div>
                     <p class="mb-0 fw-semibold fs-18">Profile Settings</p>
-                    <span class="fs-12 text-muted">Manage your account profile and password</span>
+                    <span class="fs-12 text-muted">Manage your account profile and security password</span>
                 </div>
             </div>
             <!-- End::page-header -->
@@ -30,21 +30,32 @@
                         </div>
                         <div class="card-body">
 
-                            @if (session('success') && !session('password_success'))
+                            @if (session('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <i class="feather-check-circle me-2"></i>{{ session('success') }}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                 </div>
                             @endif
 
-                            <form action="{{ route('admin.profile.update', $user->id) }}" method="POST">
+                            @if ($errors->has('username') || $errors->has('email'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    @foreach (['username', 'email'] as $field)
+                                        @error($field)
+                                            <div><i class="feather-alert-circle me-1"></i>{{ $message }}</div>
+                                        @enderror
+                                    @endforeach
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                </div>
+                            @endif
+
+                            <form action="{{ route('user.profile.update') }}" method="POST">
                                 @csrf
-                                @method('POST')
 
                                 <div class="mb-3">
-                                    <label for="admin_username" class="form-label fw-semibold">Username</label>
-                                    <input type="text" name="username" class="form-control @error('username') is-invalid @enderror"
-                                        id="admin_username" placeholder="Enter username"
+                                    <label for="user_username" class="form-label fw-semibold">Username</label>
+                                    <input type="text" name="username"
+                                        class="form-control @error('username') is-invalid @enderror"
+                                        id="user_username" placeholder="Enter username"
                                         value="{{ old('username', $user->username ?? '') }}" required>
                                     @error('username')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -52,9 +63,10 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="admin_email" class="form-label fw-semibold">Email Address</label>
-                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                                        id="admin_email" placeholder="Enter email"
+                                    <label for="user_email" class="form-label fw-semibold">Email Address</label>
+                                    <input type="email" name="email"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        id="user_email" placeholder="Enter email"
                                         value="{{ old('email', $user->email ?? '') }}" required>
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -86,55 +98,67 @@
                                 </div>
                             @endif
 
-                            <form action="{{ route('admin.profile.password') }}" method="POST">
+                            @if ($errors->has('current_password') || $errors->has('password'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    @error('current_password')
+                                        <div><i class="feather-alert-circle me-1"></i>{{ $message }}</div>
+                                    @enderror
+                                    @error('password')
+                                        <div><i class="feather-alert-circle me-1"></i>{{ $message }}</div>
+                                    @enderror
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                </div>
+                            @endif
+
+                            <form action="{{ route('user.profile.password') }}" method="POST">
                                 @csrf
 
                                 <div class="mb-3">
-                                    <label for="admin_current_password" class="form-label fw-semibold">Current Password</label>
+                                    <label for="user_current_password" class="form-label fw-semibold">Current Password</label>
                                     <div class="input-group">
                                         <input type="password" name="current_password"
                                             class="form-control @error('current_password') is-invalid @enderror"
-                                            id="admin_current_password" placeholder="Enter current password">
+                                            id="user_current_password" placeholder="Enter current password">
                                         <button class="btn btn-outline-secondary toggle-password" type="button"
-                                            data-target="admin_current_password">
+                                            data-target="user_current_password">
                                             <i class="feather-eye"></i>
                                         </button>
                                         @error('current_password')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            <div class="invalid-feedback d-block">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="admin_password" class="form-label fw-semibold">New Password</label>
+                                    <label for="user_password" class="form-label fw-semibold">New Password</label>
                                     <div class="input-group">
                                         <input type="password" name="password"
                                             class="form-control @error('password') is-invalid @enderror"
-                                            id="admin_password" placeholder="Min. 8 characters">
+                                            id="user_password" placeholder="Min. 8 characters">
                                         <button class="btn btn-outline-secondary toggle-password" type="button"
-                                            data-target="admin_password">
+                                            data-target="user_password">
                                             <i class="feather-eye"></i>
                                         </button>
                                         @error('password')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            <div class="invalid-feedback d-block">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="mt-2" id="admin_password_strength" style="display:none;">
+                                    <div class="mt-2" id="user_password_strength" style="display:none;">
                                         <div class="progress" style="height:4px;">
-                                            <div id="admin_strength_bar" class="progress-bar" style="width:0%"></div>
+                                            <div id="user_strength_bar" class="progress-bar" style="width:0%"></div>
                                         </div>
-                                        <small id="admin_strength_label" class="text-muted mt-1 d-block"></small>
+                                        <small id="user_strength_label" class="text-muted mt-1 d-block"></small>
                                     </div>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="admin_password_confirmation" class="form-label fw-semibold">Confirm New Password</label>
+                                    <label for="user_password_confirmation" class="form-label fw-semibold">Confirm New Password</label>
                                     <div class="input-group">
                                         <input type="password" name="password_confirmation"
                                             class="form-control"
-                                            id="admin_password_confirmation" placeholder="Repeat new password">
+                                            id="user_password_confirmation" placeholder="Repeat new password">
                                         <button class="btn btn-outline-secondary toggle-password" type="button"
-                                            data-target="admin_password_confirmation">
+                                            data-target="user_password_confirmation">
                                             <i class="feather-eye"></i>
                                         </button>
                                     </div>
@@ -173,13 +197,13 @@
     });
 
     // Password strength meter
-    var adminPasswordInput = document.getElementById('admin_password');
-    if (adminPasswordInput) {
-        adminPasswordInput.addEventListener('input', function() {
+    var userPasswordInput = document.getElementById('user_password');
+    if (userPasswordInput) {
+        userPasswordInput.addEventListener('input', function() {
             var val = this.value;
-            var strengthDiv = document.getElementById('admin_password_strength');
-            var bar = document.getElementById('admin_strength_bar');
-            var label = document.getElementById('admin_strength_label');
+            var strengthDiv = document.getElementById('user_password_strength');
+            var bar = document.getElementById('user_strength_bar');
+            var label = document.getElementById('user_strength_label');
 
             if (val.length === 0) {
                 strengthDiv.style.display = 'none';

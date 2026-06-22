@@ -10,6 +10,7 @@ use App\Models\Withdrawal;
 use Illuminate\Http\Request;
 use App\Models\Settings\Site;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -274,5 +275,45 @@ class HomeController extends Controller
     $notification->delete();
 
     return redirect()->back()->with('success', 'Notification deleted successfully.');
+  }
+
+  public function profile()
+  {
+    $user = Auth::user();
+    return view('user.profile', compact('user'));
+  }
+
+  public function updateProfile(Request $request)
+  {
+    $user = Auth::user();
+    $request->validate([
+        'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+        'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+    ]);
+
+    $user->username = $request->username;
+    $user->email = $request->email;
+    $user->save();
+
+    return redirect()->back()->with('success', 'Your profile was updated successfully!');
+  }
+
+  public function updatePassword(Request $request)
+  {
+    $request->validate([
+        'current_password' => 'required|string',
+        'password' => 'required|string|min:8|confirmed',
+    ]);
+
+    $user = Auth::user();
+
+    if (!Hash::check($request->current_password, $user->password)) {
+        return redirect()->back()->withErrors(['current_password' => 'The provided password does not match your current password.']);
+    }
+
+    $user->password = Hash::make($request->password);
+    $user->save();
+
+    return redirect()->back()->with('password_success', 'Your password was updated successfully!');
   }
 }

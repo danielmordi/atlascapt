@@ -51,6 +51,16 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         // $user->notify(new WelcomeEmail($user));
+
+        // Notify admin of new account registration
+        $admin = User::where('role_id', 1)->first();
+        if ($admin) {
+            $admin->notify(new \App\Notifications\AdminNotification(
+                'New Account Registration',
+                "A new user has registered and is awaiting account activation. Name: {$user->name}, Email: {$user->email}. Please review and activate their account."
+            ));
+        }
+
         return $user;
     }
 }
