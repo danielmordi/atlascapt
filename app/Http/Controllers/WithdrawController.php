@@ -55,15 +55,29 @@ class WithdrawController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'amount' => 'required|numeric',
-            'wallet_id' => 'required',
-            'coin' => 'required|integer',
-            'withdraw_from' => 'required'
-        ],
-            [
-                'amount.numeric' => 'Please enter a valid value. Example: 100.00'
-            ]);
+        $payoutMethod = $request->input('payout_method', 'crypto');
+
+        // Whitelist payout methods
+        $allowed_methods = ['crypto', 'bank_transfer', 'revolut'];
+        if (!in_array($payoutMethod, $allowed_methods)) {
+            return redirect()->back()->withErrors('Invalid payout method.');
+        }
+
+        $rules = [
+            'amount'        => 'required|numeric',
+            'wallet_id'     => 'required',
+            'payout_method' => 'required|in:crypto,bank_transfer,revolut',
+            'withdraw_from' => 'required',
+        ];
+
+        // Coin is only required for crypto withdrawals
+        if ($payoutMethod === 'crypto') {
+            $rules['coin'] = 'required|integer';
+        }
+
+        $request->validate($rules, [
+            'amount.numeric' => 'Please enter a valid value. Example: 100.00'
+        ]);
 
         // Check for withdraw limit
         $from = $request->input('withdraw_from');
@@ -91,14 +105,15 @@ class WithdrawController extends Controller
         $transferCode   = str_pad(random_int(10000, 99999), 5, '0', STR_PAD_LEFT);
 
         $withdrawalRequest = new Withdrawal;
-        $withdrawalRequest->user_id = Auth::user()->id;
-        $withdrawalRequest->coin_id = $request->input('coin');
+        $withdrawalRequest->user_id       = Auth::user()->id;
+        $withdrawalRequest->coin_id       = $payoutMethod === 'crypto' ? $request->input('coin') : null;
+        $withdrawalRequest->payout_method = $payoutMethod;
         $withdrawalRequest->withdraw_from = $request->input('withdraw_from');
-        $withdrawalRequest->wallet_id = $request->input('wallet_id');
-        $withdrawalRequest->amount = preg_replace("/[^0-9.]/", "", $request->input('amount'));
-        $withdrawalRequest->status = 'pending';
-        $withdrawalRequest->withdrawal_code = $withdrawalCode;
-        $withdrawalRequest->transfer_code   = $transferCode;
+        $withdrawalRequest->wallet_id     = $request->input('wallet_id');
+        $withdrawalRequest->amount        = preg_replace("/[^0-9.]/", "", $request->input('amount'));
+        $withdrawalRequest->status        = 'pending';
+        $withdrawalRequest->withdrawal_code          = $withdrawalCode;
+        $withdrawalRequest->transfer_code            = $transferCode;
         $withdrawalRequest->withdrawal_code_verified = false;
         $withdrawalRequest->transfer_code_verified   = false;
         $withdrawalRequest->save();

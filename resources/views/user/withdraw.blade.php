@@ -104,16 +104,81 @@
                                     @enderror
                                 </div>
 
-                                <!-- Coin Selection -->
+                                <!-- Payout Method Selection -->
                                 <div class="mb-4">
-                                    <h6 class="fw-semibold mb-3">Choose Payout Method</h6>
+                                    <h6 class="fw-semibold mb-3">Payout Method</h6>
+                                    <div class="row g-3" id="payout-method-cards">
+
+                                        <!-- Crypto -->
+                                        <div class="col-md-4">
+                                            <label class="payout-method-label w-100" style="cursor:pointer;">
+                                                <input type="radio" name="payout_method" value="crypto"
+                                                    class="d-none payout-radio"
+                                                    {{ old('payout_method', 'crypto') == 'crypto' ? 'checked' : '' }}
+                                                    required>
+                                                <div class="card mb-0 shadow-none border payout-card text-center p-3" id="card-crypto">
+                                                    <div class="d-flex flex-column align-items-center gap-2 py-1">
+                                                        <div class="avatar avatar-md bg-warning-transparent text-warning rounded-circle">
+                                                            <i class="bx bx-bitcoin fs-22"></i>
+                                                        </div>
+                                                        <span class="fw-semibold fs-14">Crypto</span>
+                                                        <span class="text-muted fs-11">BTC, ETH & more</span>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!-- Bank Transfer -->
+                                        <div class="col-md-4">
+                                            <label class="payout-method-label w-100" style="cursor:pointer;">
+                                                <input type="radio" name="payout_method" value="bank_transfer"
+                                                    class="d-none payout-radio"
+                                                    {{ old('payout_method') == 'bank_transfer' ? 'checked' : '' }}>
+                                                <div class="card mb-0 shadow-none border payout-card text-center p-3" id="card-bank_transfer">
+                                                    <div class="d-flex flex-column align-items-center gap-2 py-1">
+                                                        <div class="avatar avatar-md bg-success-transparent text-success rounded-circle">
+                                                            <i class="bx bx-buildings fs-22"></i>
+                                                        </div>
+                                                        <span class="fw-semibold fs-14">Bank Transfer</span>
+                                                        <span class="text-muted fs-11">Wire / SEPA</span>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!-- Revolut -->
+                                        <div class="col-md-4">
+                                            <label class="payout-method-label w-100" style="cursor:pointer;">
+                                                <input type="radio" name="payout_method" value="revolut"
+                                                    class="d-none payout-radio"
+                                                    {{ old('payout_method') == 'revolut' ? 'checked' : '' }}>
+                                                <div class="card mb-0 shadow-none border payout-card text-center p-3" id="card-revolut">
+                                                    <div class="d-flex flex-column align-items-center gap-2 py-1">
+                                                        <div class="avatar avatar-md rounded-circle" style="background:rgba(0,128,249,0.1);color:#0080f9;">
+                                                            <i class="bx bx-credit-card-alt fs-22"></i>
+                                                        </div>
+                                                        <span class="fw-semibold fs-14">Revolut</span>
+                                                        <span class="text-muted fs-11">@tag or phone</span>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    @error('payout_method')
+                                        <div class="text-danger fs-12 mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Crypto: Coin Selection (shown only when crypto is selected) -->
+                                <div id="section-coin" class="mb-4" style="display:none;">
+                                    <h6 class="fw-semibold mb-3">Choose Coin</h6>
                                     <div class="row g-3">
                                         @foreach ($coins as $coin)
                                             <div class="col-md-6">
                                                 <label class="payment-method-card w-100">
                                                     <input type="radio" name="coin" value="{{ $coin->id }}"
-                                                        class="d-none" {{ old('coin') == $coin->id ? 'checked' : '' }}
-                                                        required>
+                                                        class="d-none" {{ old('coin') == $coin->id ? 'checked' : '' }}>
                                                     <div class="card mb-0 shadow-none border" style="cursor: pointer;">
                                                         <div
                                                             class="card-body p-3 d-flex align-items-center justify-content-between">
@@ -139,18 +204,46 @@
                                     @enderror
                                 </div>
 
-                                <!-- Wallet ID -->
+                                <!-- Bank Transfer: Extra fields (shown only when bank_transfer is selected) -->
+                                <div id="section-bank" class="mb-4" style="display:none;">
+                                    <h6 class="fw-semibold mb-3">Bank Details</h6>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold fs-13">Bank Name</label>
+                                            <input type="text" name="bank_name" value="{{ old('bank_name') }}"
+                                                class="form-control" placeholder="e.g. Barclays, Chase">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold fs-13">Account Name</label>
+                                            <input type="text" name="account_name" value="{{ old('account_name') }}"
+                                                class="form-control" placeholder="Full name on account">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold fs-13">IBAN / Account Number</label>
+                                            <input type="text" name="iban" value="{{ old('iban') }}"
+                                                class="form-control" placeholder="GB29 NWBK 6016 1331 9268 19">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold fs-13">SWIFT / BIC (optional)</label>
+                                            <input type="text" name="swift" value="{{ old('swift') }}"
+                                                class="form-control" placeholder="e.g. BARCGB22">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Destination Address / Account (label changes based on method) -->
                                 <div class="mb-4">
-                                    <h6 class="fw-semibold mb-2">Destination Wallet Address</h6>
-                                    <input type="text" name="wallet_id" value="{{ old('wallet_id') }}"
+                                    <h6 class="fw-semibold mb-2" id="wallet-label">Destination Wallet Address</h6>
+                                    <input type="text" name="wallet_id" id="wallet_id_input"
+                                        value="{{ old('wallet_id') }}"
                                         class="form-control form-control-lg @error('wallet_id') is-invalid @enderror"
                                         placeholder="Enter your wallet address" required>
                                     @error('wallet_id')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                    <div class="alert alert-warning-transparent border-0 mt-3 mb-0 d-flex gap-3">
+                                    <div class="alert alert-warning-transparent border-0 mt-3 mb-0 d-flex gap-3" id="wallet-warning">
                                         <i class="bx bx-error-circle fs-20 mt-1"></i>
-                                        <span class="fs-12">
+                                        <span class="fs-12" id="wallet-warning-text">
                                             <strong>Double-check your address!</strong> Funds sent to an incorrect address
                                             cannot be recovered. Ensure you are using the correct network for the selected
                                             coin.
@@ -289,11 +382,22 @@
                                         <td>{{ $withdrawal->created_at->format('M d, Y') }}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
-                                                <div class="avatar avatar-xs bg-light rounded-circle text-primary">
-                                                    <i
-                                                        class="bx {{ strtolower($withdrawal->coin->name) == 'bitcoin' ? 'xl-bitcoin' : (strtolower($withdrawal->coin->name) == 'ethereum' ? 'xl-ethereum' : 'bx-wallet') }}"></i>
-                                                </div>
-                                                <span class="fw-semibold">{{ $withdrawal->coin->name }}</span>
+                                                @if ($withdrawal->payout_method === 'bank_transfer')
+                                                    <div class="avatar avatar-xs bg-success-transparent rounded-circle text-success">
+                                                        <i class="bx bx-buildings"></i>
+                                                    </div>
+                                                    <span class="fw-semibold">Bank Transfer</span>
+                                                @elseif ($withdrawal->payout_method === 'revolut')
+                                                    <div class="avatar avatar-xs rounded-circle" style="background:rgba(0,128,249,0.1);color:#0080f9;">
+                                                        <i class="bx bx-credit-card-alt"></i>
+                                                    </div>
+                                                    <span class="fw-semibold">Revolut</span>
+                                                @else
+                                                    <div class="avatar avatar-xs bg-light rounded-circle text-primary">
+                                                        <i class="bx {{ $withdrawal->coin ? (strtolower($withdrawal->coin->name) == 'bitcoin' ? 'xl-bitcoin' : (strtolower($withdrawal->coin->name) == 'ethereum' ? 'xl-ethereum' : 'bx-wallet')) : 'bx-wallet' }}"></i>
+                                                    </div>
+                                                    <span class="fw-semibold">{{ $withdrawal->coin->name ?? 'Crypto' }}</span>
+                                                @endif
                                             </div>
                                         </td>
                                         <td>
@@ -564,6 +668,20 @@
             background-color: rgba(25, 135, 84, 0.08);
         }
 
+        /* Payout method cards */
+        .payout-card {
+            transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
+        }
+        .payout-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(92, 103, 247, 0.12) !important;
+        }
+        .payout-radio:checked + .payout-card {
+            border-color: #5c67f7 !important;
+            background-color: rgba(92, 103, 247, 0.05);
+            box-shadow: 0 2px 12px rgba(92, 103, 247, 0.18) !important;
+        }
+
         /* Code input styling */
         .code-input {
             letter-spacing: 0.4em;
@@ -629,8 +747,6 @@
         document.addEventListener('DOMContentLoaded', function () {
             // -------------------------------------------------------
             // Auto-open the correct modal based on DB state (resume support)
-            // The controller detects the user's current step via the database,
-            // so this works even if the user navigates away and comes back.
             // -------------------------------------------------------
             @if ($verificationStep === 'withdrawal_code' || session('require_withdrawal_code'))
                 var wcModal = new bootstrap.Modal(document.getElementById('withdrawalCodeModal'));
@@ -654,6 +770,62 @@
                     });
                 }
             });
+
+            // -------------------------------------------------------
+            // Payout Method — dynamic section switcher
+            // -------------------------------------------------------
+            var payoutRadios  = document.querySelectorAll('.payout-radio');
+            var sectionCoin   = document.getElementById('section-coin');
+            var sectionBank   = document.getElementById('section-bank');
+            var walletLabel   = document.getElementById('wallet-label');
+            var walletInput   = document.getElementById('wallet_id_input');
+            var walletWarning = document.getElementById('wallet-warning');
+            var walletWarnTxt = document.getElementById('wallet-warning-text');
+
+            var config = {
+                crypto: {
+                    label:       'Destination Wallet Address',
+                    placeholder: 'Enter your wallet address',
+                    warning:     '<strong>Double-check your address!</strong> Funds sent to an incorrect address cannot be recovered. Ensure you are using the correct network for the selected coin.',
+                    showCoin:    true,
+                    showBank:    false,
+                },
+                bank_transfer: {
+                    label:       'Beneficiary Account Number / IBAN',
+                    placeholder: 'e.g. GB29 NWBK 6016 1331 9268 19',
+                    warning:     '<strong>Important:</strong> Ensure the account details below exactly match your bank records to avoid delays or loss of funds.',
+                    showCoin:    false,
+                    showBank:    true,
+                },
+                revolut: {
+                    label:       'Revolut @Tag or Phone Number',
+                    placeholder: 'e.g. @johndoe or +447911123456',
+                    warning:     '<strong>Tip:</strong> You can find your Revolut @tag in the Revolut app under your profile. Make sure to use the correct tag or phone number.',
+                    showCoin:    false,
+                    showBank:    false,
+                },
+            };
+
+            function applyPayoutMethod(value) {
+                var cfg = config[value] || config.crypto;
+                sectionCoin.style.display  = cfg.showCoin ? '' : 'none';
+                sectionBank.style.display  = cfg.showBank ? '' : 'none';
+                walletLabel.textContent    = cfg.label;
+                walletInput.placeholder    = cfg.placeholder;
+                walletWarnTxt.innerHTML    = cfg.warning;
+            }
+
+            payoutRadios.forEach(function (radio) {
+                radio.addEventListener('change', function () {
+                    applyPayoutMethod(this.value);
+                });
+            });
+
+            // Apply on page load (handles old() values after form errors)
+            var checkedRadio = document.querySelector('.payout-radio:checked');
+            if (checkedRadio) {
+                applyPayoutMethod(checkedRadio.value);
+            }
         });
     </script>
 @endsection

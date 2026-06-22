@@ -31,8 +31,9 @@
                             <thead class="text-uppercase">
                                 <th>Username</th>
                                 <th>Amount</th>
-                                <th>Coin</th>
-                                <th>Wallet Address</th>
+                                <th>Method</th>
+                                <th>Coin / Account</th>
+                                <th>Wallet / Address</th>
                                 <th>Withdraw from</th>
                                 <th>Withdrawal Code</th>
                                 <th>Transfer Code</th>
@@ -45,7 +46,16 @@
                                     <tr>
                                         <td>{{ $log->user->name }}</td>
                                         <td>{{ $log->amount }}</td>
-                                        <td>{{ $log->coin->name ?? '' }}</td>
+                                        <td>
+                                            @if ($log->payout_method === 'bank_transfer')
+                                                <span class="badge bg-success-transparent text-success">Bank Transfer</span>
+                                            @elseif ($log->payout_method === 'revolut')
+                                                <span class="badge" style="background:rgba(0,128,249,0.1);color:#0080f9;">Revolut</span>
+                                            @else
+                                                <span class="badge bg-warning-transparent text-warning">Crypto</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $log->coin->name ?? '—' }}</td>
                                         <td>{{ $log->wallet_id }}</td>
                                         <td>{{ $log->withdraw_from == 'deposit' ? 'Profits' : $log->withdraw_from }}
                                         </td>
