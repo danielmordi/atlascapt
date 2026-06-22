@@ -37,31 +37,191 @@
                     <div class="tab-content">
                         <div class="p-0 border-0 tab-pane show active" id="stocks-portfolio" role="tabpanel">
                             <div class="row">
-                                <div class="col-xxl-4 col-xl-6 col-md-12">
-                                    <div class="card stretch stretch-full">
-                                        <div class="card-body">
-                                            <div class="hstack justify-content-between">
-                                                <div>
-                                                    <div class="hstack gap-2 mb-4">
-                                                        <i class="feather-dollar-sign"></i>
-                                                        <span>Total Balance</span>
+                                <!-- Stat Cards Row -->
+                                <div class="col-12">
+                                    <style>
+                                        .dash-stat-card {
+                                            border: none;
+                                            border-radius: 16px;
+                                            background: #fff;
+                                            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+                                            transition: transform 0.2s ease, box-shadow 0.2s ease;
+                                            overflow: hidden;
+                                        }
+                                        .dash-stat-card:hover {
+                                            transform: translateY(-3px);
+                                            box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+                                        }
+                                        .dash-stat-card .card-body {
+                                            padding: 1.4rem 1.5rem 1.2rem;
+                                        }
+                                        .dash-stat-icon {
+                                            width: 44px;
+                                            height: 44px;
+                                            border-radius: 12px;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            font-size: 1.2rem;
+                                            flex-shrink: 0;
+                                        }
+                                        .dash-stat-icon.blue   { background: #e8f0fe; color: #4285f4; }
+                                        .dash-stat-icon.green  { background: #e6f9f0; color: #1bbc74; }
+                                        .dash-stat-icon.red    { background: #fdecea; color: #e74c3c; }
+                                        .dash-stat-icon.purple { background: #f3eeff; color: #9b59b6; }
+                                        .dash-stat-label {
+                                            font-size: 0.92rem;
+                                            font-weight: 600;
+                                            color: #1a1a2e;
+                                            margin-bottom: 2px;
+                                            line-height: 1.2;
+                                        }
+                                        .dash-stat-sub {
+                                            font-size: 0.74rem;
+                                            color: #9aa3b2;
+                                            margin-bottom: 0;
+                                        }
+                                        .dash-stat-amount {
+                                            font-size: 1.55rem;
+                                            font-weight: 700;
+                                            color: #1a1a2e;
+                                            letter-spacing: -0.5px;
+                                            margin: 0.6rem 0 0.4rem;
+                                            line-height: 1.2;
+                                        }
+                                        .dash-stat-change {
+                                            font-size: 0.78rem;
+                                            font-weight: 600;
+                                            border-radius: 6px;
+                                            padding: 2px 6px;
+                                            display: inline-block;
+                                        }
+                                        .dash-stat-change.up   { color: #1bbc74; background: #e6f9f0; }
+                                        .dash-stat-change.down { color: #e74c3c; background: #fdecea; }
+                                        .dash-stat-change i { font-size: 0.7rem; }
+                                        .dash-stat-action-row a {
+                                            font-size: 0.82rem;
+                                            font-weight: 500;
+                                            text-decoration: none;
+                                            padding: 5px 14px;
+                                            border-radius: 8px;
+                                            transition: opacity 0.2s;
+                                        }
+                                        .dash-stat-action-row a:hover { opacity: 0.85; }
+                                    </style>
+
+                                    <div class="row g-3 mb-3">
+
+                                        <!-- Card 1: Total Balance -->
+                                        <div class="col-xl-4 col-md-6">
+                                            <div class="card dash-stat-card stretch stretch-full">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-start justify-content-between mb-1">
+                                                        <div>
+                                                            <p class="dash-stat-label mb-0">Total Balance</p>
+                                                            <p class="dash-stat-sub">Current market value</p>
+                                                        </div>
+                                                        <div class="dash-stat-icon blue">
+                                                            <i class="bx bx-wallet-alt"></i>
+                                                        </div>
                                                     </div>
-                                                    <h4 class="fw-bolder mb-3">
-                                                        {{ currency_converter(Auth::user()->totalProfitEarned + Auth::user()->deposit) ?? '0.00' }}
-                                                        USD
-                                                    </h4>
-                                                    <p class="fs-12 text-muted mb-0">Total amount invested: <span
-                                                            class="fw-semibold text-dark">{{ Auth::user()->deposit == 0 ? currency_converter(0) : currency_converter(Auth::user()->deposit) }}
-                                                            USD</span></p>
+                                                    <div class="dash-stat-amount">
+                                                        $&thinsp;{{ number_format(Auth::user()->totalProfitEarned + Auth::user()->deposit, 2) }}
+                                                    </div>
+                                                    @php
+                                                        $balanceChange = Auth::user()->totalProfitEarned;
+                                                        $balanceBase   = Auth::user()->deposit > 0 ? Auth::user()->deposit : 1;
+                                                        $balancePct    = round(($balanceChange / $balanceBase) * 100, 2);
+                                                    @endphp
+                                                    <span class="dash-stat-change {{ $balancePct >= 0 ? 'up' : 'down' }}">
+                                                        <i class="bx {{ $balancePct >= 0 ? 'bx-up-arrow-alt' : 'bx-down-arrow-alt' }}"></i>
+                                                        {{ $balancePct >= 0 ? '+' : '' }}{{ currency_converter(abs($balanceChange)) }} ({{ abs($balancePct) }}%)
+                                                    </span>
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-between mt-5">
-                                                <div><a href="{{ route('user.deposit') }}"
-                                                        class="btn btn-primary">Deposit</a></div>
-                                                <div><a href="{{ route('user.my-plans') }}"
-                                                        class="btn btn-outline-primary">My Investment</a></div>
+                                        </div>
+
+                                        <!-- Card 2: Total Profit -->
+                                        <div class="col-xl-4 col-md-6">
+                                            <div class="card dash-stat-card stretch stretch-full">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-start justify-content-between mb-1">
+                                                        <div>
+                                                            <p class="dash-stat-label mb-0">Total Profit</p>
+                                                            <p class="dash-stat-sub">This month earnings</p>
+                                                        </div>
+                                                        <div class="dash-stat-icon green">
+                                                            <i class="bx bx-trending-up"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dash-stat-amount">
+                                                        $&thinsp;{{ number_format(Auth::user()->totalProfitEarned, 2) }}
+                                                    </div>
+                                                    @php
+                                                        $profit    = Auth::user()->totalProfitEarned;
+                                                        $profitPct = Auth::user()->deposit > 0 ? round(($profit / Auth::user()->deposit) * 100, 2) : 0;
+                                                    @endphp
+                                                    <span class="dash-stat-change {{ $profitPct >= 0 ? 'up' : 'down' }}">
+                                                        <i class="bx {{ $profitPct >= 0 ? 'bx-up-arrow-alt' : 'bx-down-arrow-alt' }}"></i>
+                                                        {{ $profitPct >= 0 ? '+' : '' }}{{ currency_converter(abs($profit)) }} ({{ abs($profitPct) }}%)
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <!-- Card 3: Total Loss -->
+                                        {{-- <div class="col-xl-4 col-md-6">
+                                            <div class="card dash-stat-card stretch stretch-full">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-start justify-content-between mb-1">
+                                                        <div>
+                                                            <p class="dash-stat-label mb-0">Total Loss</p>
+                                                            <p class="dash-stat-sub">Risk management</p>
+                                                        </div>
+                                                        <div class="dash-stat-icon red">
+                                                            <i class="bx bx-trending-down"></i>
+                                                        </div>
+                                                    </div>
+                                                    @php
+                                                        $loss    = Auth::user()->totalLoss ?? 0;
+                                                        $lossDeposit = Auth::user()->deposit > 0 ? Auth::user()->deposit : 1;
+                                                        $lossPct = round(($loss / $lossDeposit) * 100, 2);
+                                                    @endphp
+                                                    <div class="dash-stat-amount">
+                                                        $&thinsp;{{ number_format($loss, 2) }}
+                                                    </div>
+                                                    <span class="dash-stat-change down">
+                                                        <i class="bx bx-down-arrow-alt"></i>
+                                                        -{{ currency_converter(abs($loss)) }} ({{ abs($lossPct) }}%)
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+
+                                        <!-- Card 4: Total Investment -->
+                                        <div class="col-xl-4 col-md-6">
+                                            <div class="card dash-stat-card stretch stretch-full">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-start justify-content-between mb-1">
+                                                        <div>
+                                                            <p class="dash-stat-label mb-0">Total Investment</p>
+                                                            <p class="dash-stat-sub">Last month: {{ currency_converter(Auth::user()->deposit) }}</p>
+                                                        </div>
+                                                        <div class="dash-stat-icon purple">
+                                                            <i class="bx bx-dollar-circle"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dash-stat-amount">
+                                                        $&thinsp;{{ number_format(Auth::user()->deposit, 2) }}
+                                                    </div>
+                                                    <div class="dash-stat-action-row d-flex gap-2 mt-1">
+                                                        <a href="{{ route('user.deposit') }}" class="btn btn-primary btn-sm">Deposit</a>
+                                                        <a href="{{ route('user.my-plans') }}" class="btn btn-outline-primary btn-sm">My Plans</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="col-xxl-8 col-xl-6 col-md-12">
