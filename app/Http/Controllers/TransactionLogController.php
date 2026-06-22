@@ -42,8 +42,10 @@ class TransactionLogController extends Controller
 
         $user->wallet_balance = $amountValue + floatval(preg_replace("/[^0-9.]/", "", $user->wallet_balance));
 
+        // Always add confirmed deposit amount to the user's total deposit/amount invested
+        $user->deposit = $amountValue + floatval(preg_replace("/[^0-9.]/", "", $user->deposit));
+
         if ($deposit->package) {
-            $user->deposit = $amountValue + floatval(preg_replace("/[^0-9.]/", "", $user->deposit));
             $duration = $deposit->package->duration;
             $user->investmentDuration = $duration;
             $user->package = $deposit->package->name;
@@ -60,7 +62,6 @@ class TransactionLogController extends Controller
         }
 
         if ($deposit->copy_trader_id) {
-            $user->deposit = $amountValue + floatval(preg_replace("/[^0-9.]/", "", $user->deposit));
 
             $existingFollow = \App\Models\UserCopyTrader::where('user_id', $userId)
                 ->where('copy_trader_id', $deposit->copy_trader_id)
@@ -86,7 +87,7 @@ class TransactionLogController extends Controller
         $user->save();
 
         // Create transaction history
-        $type = $status == 'deposit' ? 'deposit' : 'reinvest';
+        $type = 'deposit';
         TransactionHistory::create([
             'user_id' => $userId,
             'type' => $type,

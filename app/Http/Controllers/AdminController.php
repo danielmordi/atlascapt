@@ -346,9 +346,10 @@ class AdminController extends Controller
         $user = User::findOrFail($deposit->user_id);
         $amountValue = floatval(preg_replace("/[^0-9.]/", "", $deposit->amount));
 
+        // Always add confirmed deposit amount to the user's total deposit/amount invested
         $user->wallet_balance = $amountValue + floatval(preg_replace("/[^0-9.]/", "", $user->wallet_balance));
+        $user->deposit = $amountValue + floatval(preg_replace("/[^0-9.]/", "", $user->deposit));
         if ($deposit->package_id) {
-          $user->deposit = $amountValue + floatval(preg_replace("/[^0-9.]/", "", $user->deposit));
           $user->package = $deposit->package->name;
           $user->package_id = $deposit->package_id;
         }
