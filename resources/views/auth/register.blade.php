@@ -43,7 +43,7 @@
                         @enderror
                     </div>
                     <div class="mb-4">
-                        <input type="tel" class="form-control @error('username') is-invalid @enderror"
+                        <input type="text" class="form-control @error('username') is-invalid @enderror"
                             placeholder="Username" name="username" required>
                         @error('username')
                             <span class="invalid-feedback">
