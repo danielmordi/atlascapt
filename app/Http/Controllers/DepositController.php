@@ -107,7 +107,7 @@ class DepositController extends Controller
           // Create Deposit record for history (optional, but keep it for consistency with current history views)
           Deposit::create([
               'user_id' => $user->id,
-              'coin_id' => $request->coin_id ?? 1, // Defaulting to 1 if not provided
+              'coin_id' => $request->coin_id ?? null, // null for internal reinvestment (no coin selected)
               'package_id' => $package->id,
               'amount' => $investAmount,
               'status' => 'completed'
