@@ -83,8 +83,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/ipo/{id}', [IpoController::class, 'destroy'])->name('ipos.delete');
 
         Route::get('token-sale', [AdminController::class, 'tokenSale'])->name('token-sale');
-        // Login as user
-        Route::get('/{id}', [AdminController::class, 'loginAs'])->name('adminLoginAsUser');
         // Verify Account
         Route::post('activate/account', [HomeController::class, 'verifyAccount'])->name('verify');
         // Set withdrawal limit
@@ -103,6 +101,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/copy-trader/{id}', [CopyTraderController::class, 'editCopyTrader'])->name('edit.copy-traders');
         Route::post('/copy-trader', [CopyTraderController::class, 'addCopyTrader'])->name('add.copy-traders');
         Route::patch('/copy-trader/{id}', [CopyTraderController::class, 'updateCopyTrader'])->name('update.copy-traders');
+        // Login as user
+        Route::get('/{id}', [AdminController::class, 'loginAs'])->name('adminLoginAsUser');
     });
 
     // USER
