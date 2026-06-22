@@ -871,8 +871,8 @@
                     <!--</li>-->
                     <br />
                     <li class="email"><i class="icon fa-solid fa-envelope"></i><a
-                            href="mailto:support@stakesfarm.com"><span class="__cf_email__"
-                                data-cfemail="support@stakesfarm.com">support@stakesfarm.com</span></a>
+                            href="mailto:support@atlascapt.com"><span class="__cf_email__"
+                                data-cfemail="support@atlascapt.com">support@atlascapt.com</span></a>
                     </li>
                     {{-- <li class="phone"><i class="icon fa-solid fa-phone"></i><a href="tel:+12093400260">+12093400260</a> --}}
                     </li>

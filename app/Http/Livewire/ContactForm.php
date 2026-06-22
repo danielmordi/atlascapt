@@ -44,7 +44,7 @@ class ContactForm extends Component
 
         try {
             // Send email
-            Mail::to('support@atlasequityhq.com')->send(new ContactFormMail([
+            Mail::to('support@atlascapt.com')->send(new ContactFormMail([
                 'name' => $this->name,
                 'phone' => $this->phone,
                 'email' => $this->email,

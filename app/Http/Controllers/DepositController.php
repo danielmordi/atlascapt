@@ -56,7 +56,7 @@ class DepositController extends Controller
 
         // Notify Admin
         // $msg = 'A deposit of '.$deposit->amout.' wa made by '.Auth::user()->name.'.';
-        // mail('admin@projectwhales.com', 'New Deposit', $msg);
+        // mail('support@atlascapt.com', 'New Deposit', $msg);
 
         return redirect()->route('user.deposit.info', $deposit->id)
             ->with('success', 'Your deposit request has been sent successfully, please follow the instructions below to complete deposit')->withInput();

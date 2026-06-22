@@ -455,7 +455,8 @@
                                 </div>
                             </div>
                             <div class="dropdown-divider"></div>
-                            <a href="{{ Auth::user()->role_id == 2 ? route('user.profile') : route('admin.profile') }}" class="dropdown-item">
+                            <a href="{{ Auth::user()->role_id == 2 ? route('user.profile') : route('admin.profile') }}"
+                                class="dropdown-item">
                                 <i class="feather-user"></i>
                                 <span>Profile & Password</span>
                             </a>
@@ -472,7 +473,8 @@
                                 <i class="feather-bell"></i>
                                 <span>Notifications</span>
                             </a>
-                            <a href="{{ Auth::user()->role_id == 2 ? route('user.profile') : route('admin.profile') }}" class="dropdown-item">
+                            <a href="{{ Auth::user()->role_id == 2 ? route('user.profile') : route('admin.profile') }}"
+                                class="dropdown-item">
                                 <i class="feather-settings"></i>
                                 <span>Account Settings</span>
                             </a>
@@ -505,7 +507,7 @@
                 <div class="container text-center" style="margin-top: 10em">
                     <h1 class="display-3">Your Account has been suspended</h1>
                     <p>Please contact our customer service team for more information.
-                        <a href="mailto:support@atlasequityhq.com">support@atlasequityhq.com</a>
+                        <a href="mailto:support@atlascapt.com">support@atlascapt.com</a>
                     </p>
                 </div>
             @else

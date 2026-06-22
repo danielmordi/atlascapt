@@ -32,7 +32,7 @@ class SendBroadcast extends Mailable
      */
     public function build()
     {
-        return $this->from('support@coinyieldstake.com', 'COINYIELD')
+        return $this->from('support@atlascapt.com', 'COINYIELD')
                     ->markdown('email.broadcast');
     }
 }

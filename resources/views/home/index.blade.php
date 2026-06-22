@@ -96,7 +96,8 @@
                                                     <div class="elementor-widget-container">
                                                         <img decoding="async" width="800" height="480"
                                                             src="{{ asset('wp-content/uploads/sites/270/2024/09/6-17.jpg') }}"
-                                                            class="attachment-large size-large wp-image-142" alt="" />
+                                                            class="attachment-large size-large wp-image-142"
+                                                            alt="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,7 +174,8 @@
                                                                 <meta itemprop="worstRating" content="0">
                                                                 <meta itemprop="bestRating" content="5">
                                                                 <div class="e-rating-wrapper" itemprop="ratingValue"
-                                                                    content="5" role="img" aria-label="Rated 5 out of 5">
+                                                                    content="5" role="img"
+                                                                    aria-label="Rated 5 out of 5">
                                                                     <div class="e-icon">
                                                                         <div class="e-icon-wrapper e-icon-marked">
                                                                             <i aria-hidden="true"
@@ -246,8 +248,8 @@
                                                                     data-id="cfdf30f" data-element_type="widget"
                                                                     data-widget_type="image.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <img loading="lazy" decoding="async" width="800"
-                                                                            height="800"
+                                                                        <img loading="lazy" decoding="async"
+                                                                            width="800" height="800"
                                                                             src="../../wp-content/uploads/sites/270/2024/09/9-13.jpg"
                                                                             class="attachment-large size-large wp-image-146"
                                                                             alt=""
@@ -262,8 +264,8 @@
                                                                     data-id="fbe5515" data-element_type="widget"
                                                                     data-widget_type="image.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <img loading="lazy" decoding="async" width="800"
-                                                                            height="800"
+                                                                        <img loading="lazy" decoding="async"
+                                                                            width="800" height="800"
                                                                             src="../../wp-content/uploads/sites/270/2024/09/10-13.jpg"
                                                                             class="attachment-large size-large wp-image-147"
                                                                             alt=""
@@ -278,8 +280,8 @@
                                                                     data-id="7c4aa8f" data-element_type="widget"
                                                                     data-widget_type="image.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <img loading="lazy" decoding="async" width="800"
-                                                                            height="800"
+                                                                        <img loading="lazy" decoding="async"
+                                                                            width="800" height="800"
                                                                             src="../../wp-content/uploads/sites/270/2024/09/11-14.jpg"
                                                                             class="attachment-large size-large wp-image-148"
                                                                             alt=""
@@ -421,8 +423,8 @@
         <div class="elementor-element elementor-element-1f88bfb e-flex e-con-boxed e-con e-parent" data-id="1f88bfb"
             data-element_type="container">
             <div class="e-con-inner">
-                <div class="elementor-element elementor-element-13fe6ea e-flex e-con-boxed e-con e-child" data-id="13fe6ea"
-                    data-element_type="container">
+                <div class="elementor-element elementor-element-13fe6ea e-flex e-con-boxed e-con e-child"
+                    data-id="13fe6ea" data-element_type="container">
                     <div class="e-con-inner">
                         <div class="elementor-element elementor-element-716f038 e-flex e-con-boxed e-con e-child"
                             data-id="716f038" data-element_type="container">
@@ -438,9 +440,11 @@
                                                     data-id="3db1e43" data-element_type="widget"
                                                     data-widget_type="image.default">
                                                     <div class="elementor-widget-container">
-                                                        <img loading="lazy" decoding="async" width="800" height="800"
+                                                        <img loading="lazy" decoding="async" width="800"
+                                                            height="800"
                                                             src="wp-content/uploads/sites/270/2024/09/12-16.jpg"
-                                                            class="attachment-large size-large wp-image-149" alt=""
+                                                            class="attachment-large size-large wp-image-149"
+                                                            alt=""
                                                             srcset="https://kitpro.site/fundpro/wp-content/uploads/sites/270/2024/09/12-16.jpg 1000w, https://kitpro.site/fundpro/wp-content/uploads/sites/270/2024/09/12-16-300x300.jpg 300w, https://kitpro.site/fundpro/wp-content/uploads/sites/270/2024/09/12-16-150x150.jpg 150w, https://kitpro.site/fundpro/wp-content/uploads/sites/270/2024/09/12-16-768x768.jpg 768w, https://kitpro.site/fundpro/wp-content/uploads/sites/270/2024/09/12-16-800x800.jpg 800w"
                                                             sizes="(max-width: 800px) 100vw, 800px" />
                                                     </div>
@@ -508,9 +512,9 @@
                                                         <div class="elementor-counter">
                                                             <div class="elementor-counter-number-wrapper">
                                                                 <span class="elementor-counter-number-prefix"></span>
-                                                                <span class="elementor-counter-number" data-duration="2000"
-                                                                    data-to-value="15" data-from-value="0"
-                                                                    data-delimiter=",">0</span>
+                                                                <span class="elementor-counter-number"
+                                                                    data-duration="2000" data-to-value="15"
+                                                                    data-from-value="0" data-delimiter=",">0</span>
                                                                 <span class="elementor-counter-number-suffix">+</span>
                                                             </div>
                                                         </div>
@@ -541,9 +545,9 @@
                                                         <div class="elementor-counter">
                                                             <div class="elementor-counter-number-wrapper">
                                                                 <span class="elementor-counter-number-prefix"></span>
-                                                                <span class="elementor-counter-number" data-duration="2000"
-                                                                    data-to-value="75" data-from-value="0"
-                                                                    data-delimiter=",">0</span>
+                                                                <span class="elementor-counter-number"
+                                                                    data-duration="2000" data-to-value="75"
+                                                                    data-from-value="0" data-delimiter=",">0</span>
                                                                 <span class="elementor-counter-number-suffix">+</span>
                                                             </div>
                                                         </div>
@@ -574,9 +578,9 @@
                                                         <div class="elementor-counter">
                                                             <div class="elementor-counter-number-wrapper">
                                                                 <span class="elementor-counter-number-prefix"></span>
-                                                                <span class="elementor-counter-number" data-duration="2000"
-                                                                    data-to-value="48" data-from-value="0"
-                                                                    data-delimiter=",">0</span>
+                                                                <span class="elementor-counter-number"
+                                                                    data-duration="2000" data-to-value="48"
+                                                                    data-from-value="0" data-delimiter=",">0</span>
                                                                 <span class="elementor-counter-number-suffix">K</span>
                                                             </div>
                                                         </div>
@@ -648,7 +652,8 @@
                                                     data-id="a97d244" data-element_type="widget"
                                                     data-widget_type="image.default">
                                                     <div class="elementor-widget-container">
-                                                        <img loading="lazy" decoding="async" width="512" height="512"
+                                                        <img loading="lazy" decoding="async" width="512"
+                                                            height="512"
                                                             src="wp-content/uploads/sites/270/2024/09/13.png"
                                                             class="elementor-animation-float attachment-large size-large wp-image-150"
                                                             alt=""
@@ -706,8 +711,8 @@
         <div class="elementor-element elementor-element-dc21848 e-flex e-con-boxed e-con e-parent" data-id="dc21848"
             data-element_type="container">
             <div class="e-con-inner">
-                <div class="elementor-element elementor-element-397a95b e-flex e-con-boxed e-con e-child" data-id="397a95b"
-                    data-element_type="container">
+                <div class="elementor-element elementor-element-397a95b e-flex e-con-boxed e-con e-child"
+                    data-id="397a95b" data-element_type="container">
                     <div class="e-con-inner">
                         <div class="elementor-element elementor-element-0558ef4 e-con-full e-flex e-con e-child"
                             data-id="0558ef4" data-element_type="container">
@@ -776,7 +781,8 @@
                                                         data-id="e4980c3" data-element_type="widget"
                                                         data-widget_type="image.default">
                                                         <div class="elementor-widget-container">
-                                                            <img loading="lazy" decoding="async" width="512" height="512"
+                                                            <img loading="lazy" decoding="async" width="512"
+                                                                height="512"
                                                                 src="wp-content/uploads/sites/270/2024/09/14.png"
                                                                 class="elementor-animation-float attachment-large size-large wp-image-151"
                                                                 alt=""
@@ -818,7 +824,8 @@
                                                         data-id="0164b2e" data-element_type="widget"
                                                         data-widget_type="image.default">
                                                         <div class="elementor-widget-container">
-                                                            <img loading="lazy" decoding="async" width="512" height="512"
+                                                            <img loading="lazy" decoding="async" width="512"
+                                                                height="512"
                                                                 src="wp-content/uploads/sites/270/2024/09/16.png"
                                                                 class="elementor-animation-float attachment-large size-large wp-image-153"
                                                                 alt=""
@@ -866,7 +873,8 @@
                                                         data-id="c4e9694" data-element_type="widget"
                                                         data-widget_type="image.default">
                                                         <div class="elementor-widget-container">
-                                                            <img loading="lazy" decoding="async" width="512" height="512"
+                                                            <img loading="lazy" decoding="async" width="512"
+                                                                height="512"
                                                                 src="wp-content/uploads/sites/270/2024/09/15.png"
                                                                 class="elementor-animation-float attachment-large size-large wp-image-152"
                                                                 alt=""
@@ -909,7 +917,8 @@
                                                         data-id="d00d8c1" data-element_type="widget"
                                                         data-widget_type="image.default">
                                                         <div class="elementor-widget-container">
-                                                            <img loading="lazy" decoding="async" width="512" height="512"
+                                                            <img loading="lazy" decoding="async" width="512"
+                                                                height="512"
                                                                 src="wp-content/uploads/sites/270/2024/09/17.png"
                                                                 class="elementor-animation-float attachment-large size-large wp-image-154"
                                                                 alt=""
@@ -983,7 +992,8 @@
                                         </div>
                                     </div>
                                     <div class="elementor-element elementor-element-1ca6394 elementor-widget elementor-widget-text-editor"
-                                        data-id="1ca6394" data-element_type="widget" data-widget_type="text-editor.default">
+                                        data-id="1ca6394" data-element_type="widget"
+                                        data-widget_type="text-editor.default">
                                         <div class="elementor-widget-container">
                                             <p>The convergence of traditional finance and digital assets has created a new
                                                 era of opportunity. We provide the bridge for investors to move seamlessly
@@ -1010,7 +1020,8 @@
                                                         data-id="f8e0397" data-element_type="widget"
                                                         data-widget_type="image.default">
                                                         <div class="elementor-widget-container">
-                                                            <img loading="lazy" decoding="async" width="512" height="512"
+                                                            <img loading="lazy" decoding="async" width="512"
+                                                                height="512"
                                                                 src="wp-content/uploads/sites/270/2024/09/18.png"
                                                                 class="elementor-animation-float attachment-large size-large wp-image-155"
                                                                 alt=""
@@ -1060,7 +1071,8 @@
                                                         data-id="5998769" data-element_type="widget"
                                                         data-widget_type="image.default">
                                                         <div class="elementor-widget-container">
-                                                            <img loading="lazy" decoding="async" width="512" height="512"
+                                                            <img loading="lazy" decoding="async" width="512"
+                                                                height="512"
                                                                 src="wp-content/uploads/sites/270/2024/09/19.png"
                                                                 class="elementor-animation-float attachment-large size-large wp-image-156"
                                                                 alt=""
@@ -1110,7 +1122,8 @@
                                                         data-id="c882831" data-element_type="widget"
                                                         data-widget_type="image.default">
                                                         <div class="elementor-widget-container">
-                                                            <img loading="lazy" decoding="async" width="512" height="512"
+                                                            <img loading="lazy" decoding="async" width="512"
+                                                                height="512"
                                                                 src="wp-content/uploads/sites/270/2024/09/20.png"
                                                                 class="elementor-animation-float attachment-large size-large wp-image-157"
                                                                 alt=""
@@ -1157,8 +1170,8 @@
         <div class="elementor-element elementor-element-290df7d e-flex e-con-boxed e-con e-parent" data-id="290df7d"
             data-element_type="container">
             <div class="e-con-inner">
-                <div class="elementor-element elementor-element-e37cda4 e-flex e-con-boxed e-con e-child" data-id="e37cda4"
-                    data-element_type="container">
+                <div class="elementor-element elementor-element-e37cda4 e-flex e-con-boxed e-con e-child"
+                    data-id="e37cda4" data-element_type="container">
                     <div class="e-con-inner">
                         <div class="elementor-element elementor-element-ca09db1 e-con-full e-flex e-con e-child"
                             data-id="ca09db1" data-element_type="container">
@@ -1337,7 +1350,8 @@
                                                                             </div>
 
                                                                             <div class="elementskit-commentor-bio">
-                                                                                <div class="elementkit-commentor-details ">
+                                                                                <div
+                                                                                    class="elementkit-commentor-details ">
                                                                                     <div class="elementskit-profile-info">
                                                                                         <strong
                                                                                             class="elementskit-author-name">Handi
@@ -1399,7 +1413,8 @@
                                                                             </div>
 
                                                                             <div class="elementskit-commentor-bio">
-                                                                                <div class="elementkit-commentor-details ">
+                                                                                <div
+                                                                                    class="elementkit-commentor-details ">
                                                                                     <div class="elementskit-profile-info">
                                                                                         <strong
                                                                                             class="elementskit-author-name">Emilio
@@ -1461,7 +1476,8 @@
                                                                             </div>
 
                                                                             <div class="elementskit-commentor-bio">
-                                                                                <div class="elementkit-commentor-details ">
+                                                                                <div
+                                                                                    class="elementkit-commentor-details ">
                                                                                     <div class="elementskit-profile-info">
                                                                                         <strong
                                                                                             class="elementskit-author-name">Alice
@@ -1521,7 +1537,8 @@
                                                                             </div>
 
                                                                             <div class="elementskit-commentor-bio">
-                                                                                <div class="elementkit-commentor-details ">
+                                                                                <div
+                                                                                    class="elementkit-commentor-details ">
                                                                                     <div class="elementskit-profile-info">
                                                                                         <strong
                                                                                             class="elementskit-author-name">Victor
@@ -1582,7 +1599,8 @@
                                                                             </div>
 
                                                                             <div class="elementskit-commentor-bio">
-                                                                                <div class="elementkit-commentor-details ">
+                                                                                <div
+                                                                                    class="elementkit-commentor-details ">
                                                                                     <div class="elementskit-profile-info">
                                                                                         <strong
                                                                                             class="elementskit-author-name">Anita
@@ -1642,7 +1660,8 @@
                                                                             </div>
 
                                                                             <div class="elementskit-commentor-bio">
-                                                                                <div class="elementkit-commentor-details ">
+                                                                                <div
+                                                                                    class="elementkit-commentor-details ">
                                                                                     <div class="elementskit-profile-info">
                                                                                         <strong
                                                                                             class="elementskit-author-name">Claire
@@ -1672,8 +1691,8 @@
         <div class="elementor-element elementor-element-a3a4eab e-flex e-con-boxed e-con e-parent" data-id="a3a4eab"
             data-element_type="container">
             <div class="e-con-inner">
-                <div class="elementor-element elementor-element-7de7341 e-flex e-con-boxed e-con e-child" data-id="7de7341"
-                    data-element_type="container">
+                <div class="elementor-element elementor-element-7de7341 e-flex e-con-boxed e-con e-child"
+                    data-id="7de7341" data-element_type="container">
                     <div class="e-con-inner">
                         <div class="elementor-element elementor-element-a517317 e-flex e-con-boxed e-con e-child"
                             data-id="a517317" data-element_type="container">
@@ -1742,14 +1761,16 @@
                                                                 data-id="7d905cf" data-element_type="widget"
                                                                 data-widget_type="heading.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <h3 class="elementor-heading-title elementor-size-default">
+                                                                    <h3
+                                                                        class="elementor-heading-title elementor-size-default">
                                                                         {{ currency_converter($package->min_val) }}
                                                                     </h3>
                                                                 </div>
                                                             </div>
                                                             <div class="elementor-element elementor-element-c5176aa elementor-widget elementor-widget-text-editor"
                                                                 data-id="c5176aa" data-element_type="widget"
-                                                                data-widget_type="text-editor.default" style="text-align: left">
+                                                                data-widget_type="text-editor.default"
+                                                                style="text-align: left">
                                                                 <div class="elementor-widget-container">
                                                                     <p>Up to {{ $package->percentage }}% Daily ROI</p>
                                                                 </div>
@@ -1766,7 +1787,8 @@
                                                                     <div class="elementor-button-wrapper">
                                                                         <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow"
                                                                             href="{{ route('user.mining') }}">
-                                                                            <span class="elementor-button-content-wrapper">
+                                                                            <span
+                                                                                class="elementor-button-content-wrapper">
                                                                                 <span class="elementor-button-text">Invest
                                                                                     Now</span>
                                                                             </span>
@@ -1918,8 +1940,8 @@
         <div class="elementor-element elementor-element-05b5c9c e-flex e-con-boxed e-con e-parent" data-id="05b5c9c"
             data-element_type="container">
             <div class="e-con-inner">
-                <div class="elementor-element elementor-element-74b8411 e-flex e-con-boxed e-con e-child" data-id="74b8411"
-                    data-element_type="container">
+                <div class="elementor-element elementor-element-74b8411 e-flex e-con-boxed e-con e-child"
+                    data-id="74b8411" data-element_type="container">
                     <div class="e-con-inner">
                         <div class="elementor-element elementor-element-f3f9808 e-flex e-con-boxed e-con e-child"
                             data-id="f3f9808" data-element_type="container">
@@ -1945,7 +1967,8 @@
                                                                 aria-expanded="{{ $index == 0 ? 'true' : 'false' }}"
                                                                 aria-controls="Collapse-{{ $faq->id }}">
 
-                                                                <span class="ekit-accordion-title">{{ $faq->question }}</span>
+                                                                <span
+                                                                    class="ekit-accordion-title">{{ $faq->question }}</span>
 
                                                                 <div class="ekit_accordion_icon_group">
                                                                     <div class="ekit_accordion_normal_icon">
@@ -2020,7 +2043,7 @@
                                     <div class="elementor-widget-container">
                                         <div class="elementor-button-wrapper">
                                             <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-grow"
-                                                href="mailto:support@atlasequityhq.com">
+                                                href="mailto:support@atlascapt.com">
                                                 <span class="elementor-button-content-wrapper">
                                                     <span class="elementor-button-text">Contact us for more info</span>
                                                 </span>

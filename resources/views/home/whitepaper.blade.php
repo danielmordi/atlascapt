@@ -479,7 +479,7 @@
                     <p>
                         For more information kindly visit:
                     <p>WEBSITE: <a href="https://stakefarms.online/">http://www.stakefarms.online/</a></p>
-                    <p>E-MAIL US: support@atlasequityhq.com</p>
+                    <p>E-MAIL US: support@atlascapt.com</p>
                     </p>
 
                     <h2>OUR PARTNERS</h2>

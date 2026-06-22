@@ -62,8 +62,39 @@
         window.__lc = window.__lc || {};
         window.__lc.license = 19472431;
         window.__lc.integration_name = "manual_channels";
-        window.__lc.product_name = "livechat";
-        ; (function (n, t, c) { function i(n) { return e._h ? e._h.apply(null, n) : e._q.push(n) } var e = { _q: [], _h: null, _v: "2.0", on: function () { i(["on", c.call(arguments)]) }, once: function () { i(["once", c.call(arguments)]) }, off: function () { i(["off", c.call(arguments)]) }, get: function () { if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load."); return i(["get", c.call(arguments)]) }, call: function () { i(["call", c.call(arguments)]) }, init: function () { var n = t.createElement("script"); n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js", t.head.appendChild(n) } }; !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e }(window, document, [].slice))
+        window.__lc.product_name = "livechat";;
+        (function(n, t, c) {
+            function i(n) {
+                return e._h ? e._h.apply(null, n) : e._q.push(n)
+            }
+            var e = {
+                _q: [],
+                _h: null,
+                _v: "2.0",
+                on: function() {
+                    i(["on", c.call(arguments)])
+                },
+                once: function() {
+                    i(["once", c.call(arguments)])
+                },
+                off: function() {
+                    i(["off", c.call(arguments)])
+                },
+                get: function() {
+                    if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load.");
+                    return i(["get", c.call(arguments)])
+                },
+                call: function() {
+                    i(["call", c.call(arguments)])
+                },
+                init: function() {
+                    var n = t.createElement("script");
+                    n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js",
+                        t.head.appendChild(n)
+                }
+            };
+            !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e
+        }(window, document, [].slice))
     </script>
     <noscript><a href="https://www.livechat.com/chat-with/19472431/" rel="nofollow">Chat with us</a>, powered by <a
             href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
@@ -101,18 +132,18 @@
                         <div class="horizontal-logo">
                             <a href="{{ Auth::user()->role_id == 2 ? route('user.dashboard') : route('admin.dashboard') }}"
                                 class="header-logo">
-                                <img src="{{ asset('build/assets/images/brand-logos/desktop-logo.png') }}" alt="logo"
-                                    class="desktop-logo">
-                                <img src="{{ asset('build/assets/images/brand-logos/toggle-logo.png') }}" alt="logo"
-                                    class="toggle-logo">
-                                <img src="{{ asset('build/assets/images/brand-logos/desktop-logo.png') }}" alt="logo"
-                                    class="desktop-dark" width="150">
-                                <img src="{{ asset('build/assets/images/brand-logos/toggle-dark.png') }}" alt="logo"
-                                    class="toggle-dark">
-                                <img src="{{ asset('build/assets/images/brand-logos/desktop-white.png') }}" alt="logo"
-                                    class="desktop-white" width="150">
-                                <img src="{{ asset('build/assets/images/brand-logos/toggle-white.png') }}" alt="logo"
-                                    class="toggle-white">
+                                <img src="{{ asset('build/assets/images/brand-logos/desktop-logo.png') }}"
+                                    alt="logo" class="desktop-logo">
+                                <img src="{{ asset('build/assets/images/brand-logos/toggle-logo.png') }}"
+                                    alt="logo" class="toggle-logo">
+                                <img src="{{ asset('build/assets/images/brand-logos/desktop-logo.png') }}"
+                                    alt="logo" class="desktop-dark" width="150">
+                                <img src="{{ asset('build/assets/images/brand-logos/toggle-dark.png') }}"
+                                    alt="logo" class="toggle-dark">
+                                <img src="{{ asset('build/assets/images/brand-logos/desktop-white.png') }}"
+                                    alt="logo" class="desktop-white" width="150">
+                                <img src="{{ asset('build/assets/images/brand-logos/toggle-white.png') }}"
+                                    alt="logo" class="toggle-white">
                             </a>
                         </div>
                     </div>
@@ -315,7 +346,7 @@
                 <div class="container text-center" style="margin-top: 10em">
                     <h1 class="display-3">Your Account has been suspended</h1>
                     <p>Please contact our customer service team for more information.
-                        <a href="mailto:support@atlasequityhq.com">support@.com</a>
+                        <a href="mailto:support@atlascapt.com">support@.com</a>
                     </p>
                 </div>
                 @dd()
@@ -337,15 +368,23 @@
             </div>
         </footer>
         <!-- END FOOTER -->
-        
-        
+
+
 
     </div>
     <!-- END PAGE-->
 
     <!-- SCRIPTS -->
     <div class="gtranslate_wrapper"></div>
-    <script>window.gtranslateSettings = {"default_language":"en","native_language_names":true,"detect_browser_language":true,"languages":["en","fr","it","es","de","id","th","hi","ar"],"wrapper_selector":".gtranslate_wrapper"}</script>
+    <script>
+        window.gtranslateSettings = {
+            "default_language": "en",
+            "native_language_names": true,
+            "detect_browser_language": true,
+            "languages": ["en", "fr", "it", "es", "de", "id", "th", "hi", "ar"],
+            "wrapper_selector": ".gtranslate_wrapper"
+        }
+    </script>
     <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 
     <!-- SCROLL-TO-TOP -->

@@ -100,7 +100,7 @@ class TransactionLogController extends Controller
         $deposit->save();
 
         $msg = 'You\'ve just confirmed the sum of ' . $deposit->amount . ' to be credited to ' . $user->name . '.';
-        mail('admin@projectwhales.com', 'Transaction confirmation', $msg);
+        mail('support@atlascapt.com', 'Transaction confirmation', $msg);
 
         return redirect()->back()->with('success', 'Confirmed!');
     }
@@ -155,7 +155,7 @@ class TransactionLogController extends Controller
         ]);
 
         $msg = 'You\'ve just confirmed the sum of ' . $amount . ' to be withdraw by ' . $update->name . '.';
-        mail('admin@projectwhales.com', 'Transaction confirmation', $msg);
+        mail('support@atlascapt.com', 'Transaction confirmation', $msg);
 
         return redirect()->back()->with('success', 'Confirmed!');
     }

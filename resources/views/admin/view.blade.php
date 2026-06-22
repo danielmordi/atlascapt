@@ -249,12 +249,14 @@
                                     <div class="mb-4 d-flex align-items-center justify-content-between p-3 rounded"
                                         style="background: rgba(var(--warning-rgb, 255,193,7), 0.1); border-left: 4px solid #f59e0b;">
                                         <div class="d-flex align-items-center gap-3">
-                                            <div style="width:42px;height:42px;border-radius:50%;background:rgba(255,193,7,0.2);display:flex;align-items:center;justify-content:center;">
+                                            <div
+                                                style="width:42px;height:42px;border-radius:50%;background:rgba(255,193,7,0.2);display:flex;align-items:center;justify-content:center;">
                                                 <i class="bx bx-time-five text-warning fs-20"></i>
                                             </div>
                                             <div>
                                                 <h6 class="fw-semibold mb-0">Account Pending Activation</h6>
-                                                <small class="text-muted">This user's account is awaiting admin approval before they can access the platform.</small>
+                                                <small class="text-muted">This user's account is awaiting admin approval
+                                                    before they can access the platform.</small>
                                             </div>
                                         </div>
                                         <form action="{{ route('admin.verify') }}" method="post" class="d-inline ms-3">
@@ -271,7 +273,8 @@
                                         <i class="bx bx-check-shield text-success fs-22"></i>
                                         <div>
                                             <h6 class="fw-semibold mb-0 text-success">Account Activated</h6>
-                                            <small class="text-muted">This user's account is active and they have full access to the platform.</small>
+                                            <small class="text-muted">This user's account is active and they have full
+                                                access to the platform.</small>
                                         </div>
                                     </div>
                                 @endif
@@ -291,7 +294,8 @@
                                                 <a href="{{ asset('storage/' . $user->kyc) }}"
                                                     data-lightbox="{{ $user->username }}"
                                                     class="btn btn-sm btn-primary-light">View Full Image</a>
-                                                <form action="{{ route('admin.verify') }}" method="post" class="d-inline">
+                                                <form action="{{ route('admin.verify') }}" method="post"
+                                                    class="d-inline">
                                                     @csrf
                                                     <input type="hidden" name="uid" value="{{ $user->id }}">
                                                     <button type="submit" class="btn btn-sm btn-success">Mark as

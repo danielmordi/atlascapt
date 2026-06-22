@@ -306,7 +306,7 @@
                     <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
                     <ul>
                         <li>
-                            <p>By email: support@stakesfarm.com</p>
+                            <p>By email: support@atlascapt.com</p>
                         </li>
                         <li>
                             <p>By phone number: +19293602066</p>
