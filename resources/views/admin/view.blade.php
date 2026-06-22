@@ -474,10 +474,8 @@
                 </div>
             </div>
 
-            {{-- Modals remain but relocated for cleaner structure --}}
-            @push('modals')
-                @include('admin.partials.modals', ['user' => $user, 'packages' => $packages])
-            @endpush
+            {{-- Modals --}}
+            @include('admin.partials.modals', ['user' => $user, 'packages' => $packages])
 
         </div>
         <!-- end main content-->

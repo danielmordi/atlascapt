@@ -37,7 +37,7 @@ class UpdateUserAccountDetails extends Component
         $this->package = $this->user->package;
         $this->get_package = Package::where('id', $this->package)->first();
         $this->amt_invested = $this->user->deposit ?? 0;
-        $this->amt_withdrawn = $this->user->withdrawal->amount ?? 0;
+        $this->amt_withdrawn = optional($this->user->withdrawal)->amount ?? 0;
         $this->portfolio_value = $this->user->totalProfitEarned ?? 0;
         $this->bonus = $this->user->bonus ?? 0;
     }
