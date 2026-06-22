@@ -107,8 +107,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     // USER
-    Route::get('/activate', [HomeController::class, 'activated'])->name('activated');
-    Route::group(['middleware' => ['App\Http\Middleware\authCheck:user', 'isActivated'], 'prefix' => 'account', 'as' => 'user.'], function () {
+    // Route::get('/activate', [HomeController::class, 'activated'])->name('activated');
+    Route::group(['middleware' => ['App\Http\Middleware\authCheck:user'], 'prefix' => 'account', 'as' => 'user.'], function () {
         Route::get('/', [HomeController::class, 'user'])->name('dashboard');
         Route::get('/notifications', [HomeController::class, 'notifications'])->name('notifications');
         Route::get('/notifications/read/{id}', [HomeController::class, 'readNotification'])->name('notifications.read');
