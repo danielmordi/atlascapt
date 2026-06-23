@@ -328,8 +328,8 @@
                                                     data-widget_type="heading.default">
                                                     <div class="elementor-widget-container">
                                                         <h5 class="elementor-heading-title elementor-size-default">
-                                                            <a href="https://t.me/stakefarmltds" target="_blank"
-                                                                rel="noopener noreferrer">Join us on Telegram</a>
+                                                            <a href="https://wa.me/12622898662" target="_blank"
+                                                                rel="noopener noreferrer">Join us on Whatsapp</a>
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -337,7 +337,7 @@
                                                     data-id="1c91fd8" data-element_type="widget"
                                                     data-widget_type="text-editor.default">
                                                     <div class="elementor-widget-container">
-                                                        <a href="https://t.me/stakefarmltds" target="_blank"
+                                                        <a href="https://wa.me/12622898662" target="_blank"
                                                             rel="noopener noreferrer">Click here</a>
                                                     </div>
                                                 </div>
@@ -370,7 +370,7 @@
                                                     data-widget_type="heading.default">
                                                     <div class="elementor-widget-container">
                                                         <h5 class="elementor-heading-title elementor-size-default">
-                                                            Chat on Whatsapp
+                                                            Contact Us Via Email
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -379,11 +379,7 @@
                                                     data-widget_type="text-editor.default">
                                                     <div class="elementor-widget-container">
                                                         <p>
-                                                            Click 
-                                                            <a href="https://wa.link/qt36up">
-                                                                here
-                                                            </a>
-                                                            to chat on Whatsapp
+                                                            support@atlascapt.com
                                                         </p>
                                                     </div>
                                                 </div>
